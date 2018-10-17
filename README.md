@@ -274,5 +274,43 @@ end
 ```
 
 ```
+my_first_experiment:
+  alternatives:
+    - a 
+    - b
+my_second_experiment:
+  alternatives:
+    - name: a
+      percent: 67
+    - name: b
+      percent: 33
+  resettable: false
+  
+my_first_experiment:
+  alternatives:
+    - a
+    - b
+  metadata:
+    a:
+      text: "Have a fantastic day"
+    b: 
+      text: "Don't get hit by a bus"
+
+development: redis://localhost:6379
+test: redis://localhost:6379
+staging: redis://redis1.example.com:6397
+fi: redis://localhost:6379
+production: redis://redis1.example.com:6379
+```
+
+```html
+<% ab_test("my_frist_experiment") do |alternative, meta| %>
+  <%= alternative %>
+  <small><%= meta['text'] %></small>
+<% end %>
+  
 
 ```
+
+
+
